@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Satisa - Grille Tarifaire - Offre Clé en Main</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #002730 0%, #15b4a2 100%);
+            color: white;
+            padding: 50px 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.8em;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.3em;
+            opacity: 0.95;
+        }
+
+        .content {
+            padding: 50px 30px;
+        }
+
+        .main-offer {
+            background: linear-gradient(135deg, #97e1dc 0%, #ffffff 100%);
+            color: #002730;
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 50px;
+            position: relative;
+            border: 2px solid #15b4a2;
+        }
+
+        .main-offer h2 {
+            font-size: 2.4em;
+            margin-bottom: 20px;
+            color: #002730;
+        }
+
+        .price-tag {
+            font-size: 3.2em;
+            font-weight: 900;
+            margin: 25px 0;
+            color: #15b4a2;
+        }
+
+        .delivery-time {
+            font-size: 1.4em;
+            margin-bottom: 30px;
+            color: #002730;
+            font-weight: 600;
+        }
+
+        .included-features {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 25px;
+            border: 1px solid #15b4a2;
+        }
+
+        .included-features h3 {
+            color: #002730;
+            font-size: 1.8em;
+            margin-bottom: 25px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #15b4a2;
+        }
+
+        .feature-item strong {
+            color: #002730;
+            font-weight: 700;
+        }
+
+        .feature-item span {
+            color: #666;
+        }
+
+        .addons-section {
+            margin-top: 50px;
+        }
+
+        .addons-title {
+            color: #002730;
+            font-size: 2.2em;
+            margin-bottom: 35px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .sections-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 30px;
+        }
+
+        .section {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid #e9ecef;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            border-color: #15b4a2;
+        }
+
+        .section h3 {
+            color: #002730;
+            font-size: 1.6em;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+        }
+
+        .option-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .option-table th,
+        .option-table td {
+            padding: 15px 12px;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .option-table th {
+            background: #002730;
+            color: white;
+            font-weight: 600;
+        }
+
+        .option-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        .option-table td {
+            color: #333;
+        }
+
+        .option-table small {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .price-highlight {
+            font-weight: 700;
+            color: #15b4a2;
+            font-size: 1.2em;
+        }
+
+        .formula-card {
+            background: white;
+            color: #002730;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border: 2px solid #15b4a2;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .formula-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .formula-card h4 {
+            font-size: 1.6em;
+            margin-bottom: 15px;
+            color: #002730;
+        }
+
+        .formula-price {
+            font-size: 2.8em;
+            font-weight: 900;
+            margin: 20px 0;
+            color: #15b4a2;
+        }
+
+        .formula-card p {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .formula-features {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .formula-features li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #333;
+        }
+
+        .formula-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #15b4a2;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .advanced-modules-title {
+            color: #002730;
+            font-size: 2.2em;
+            margin: 50px 0 30px 0;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .payment-section {
+            background: linear-gradient(135deg, #97e1dc 0%, #ffffff 100%);
+            color: #002730;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 50px;
+            border: 2px solid #15b4a2;
+        }
+
+        .payment-section h3 {
+            font-size: 2em;
+            margin-bottom: 25px;
+            color: #002730;
+            font-weight: 700;
+        }
+
+        .payment-terms {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .payment-term {
+            background: white;
+            padding: 20px 30px;
+            border-radius: 12px;
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #002730;
+            border: 1px solid #15b4a2;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.2em;
+            }
+            
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .sections-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .payment-terms {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Satisa - Grille Tarifaire</h1>
+            <p>Solutions Web Professionnelles</p>
+        </div>
+
+        <div class="content">
+            <div class="main-offer">
+                <h2>Formule Essentielle</h2>
+                <div class="price-tag">🔧 Prix : 750€ TTC</div>
+                <div class="delivery-time">⏱️ Délai : 5 jours ouvrés (après brief validé)</div>
+                
+                <div class="included-features">
+                    <h3>✅ Inclus dans la formule :</h3>
+                    <div class="feature-grid">
+                        <div class="feature-item">
+                            <strong>Jusqu'à 4 pages</strong> <span>Accueil, À propos, Contact (ou équivalents)</span>
+                        </div>
+                        <div class="feature-item">
+                            <strong>Design personnalisé</strong> <span>Basé sur des maquettes</span>
+                        </div>
+                        <div class="feature-item">
+                            <strong>Site responsive</strong> <span>Adapté pour mobile / tablette / ordinateur</span>
+                        </div>
+                        <div class="feature-item">
+                            <strong>Formulaire de contact</strong> <span>Basique (email)</span>
+                        </div>
+                        <div class="feature-item">
+                            <strong>2 visios incluses</strong> <span>Cadrage + Remise du site</span>
+                        </div>
+                        <div class="feature-item">
+                            <strong>Retouches illimitées</strong> <span>Pendant 7 jours après livraison, dans le périmètre défini (Via whatsapp)</span>
+                        </div>
+                        <div class="feature-item">
+                            <strong>Livraison rapide</strong> <span>En 5 jours ouvrés à partir de la validation du brief</span>
+                        </div>
+                        <div class="feature-item">
+                            <strong>SEO de base / Référencement</strong> <span>Optimisation de base, stratégie mot-clés standard</span>
+                        </div>
+                        <div class="feature-item">
+                            <strong>Pages légales</strong> <span>Mentions légales et informations légales</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="addons-section">
+                <h2 class="addons-title">🧩 Add-ons - Options supplémentaires</h2>
+                
+                <div class="sections-grid">
+                    <div class="section">
+                        <h3>🎨 Personnalisation & Extensions</h3>
+                        <table class="option-table">
+                            <thead>
+                                <tr>
+                                    <th>Fonctionnalité</th>
+                                    <th>Prix TTC</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Multilingue</td>
+                                    <td class="price-highlight">200€</td>
+                                </tr>
+                                <tr>
+                                    <td>Ajout de pages (par page)</td>
+                                    <td class="price-highlight">75€</td>
+                                </tr>
+                                <tr>
+                                    <td>Conception d'une charte graphique simple</td>
+                                    <td class="price-highlight">120€</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="section">
+                        <h3>📈 Visibilité & Marketing</h3>
+                        <table class="option-table">
+                            <thead>
+                                <tr>
+                                    <th>Service</th>
+                                    <th>Prix TTC</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Connexion outils d'analyse<br>
+                                        <small>Google Analytics + Search Console + Cookies</small></td>
+                                    <td class="price-highlight">80€</td>
+                                </tr>
+                                <tr>
+                                    <td>Accompagnement création fiche<br>
+                                        <small>Google My Business</small></td>
+                                    <td class="price-highlight">70€</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="section">
+                        <h3>🔗 Connexions externes</h3>
+                        <table class="option-table">
+                            <thead>
+                                <tr>
+                                    <th>Service</th>
+                                    <th>Prix TTC</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Connexion à CRM<br>
+                                        <small>(Notion, etc.)</small></td>
+                                    <td class="price-highlight">60€</td>
+                                </tr>
+                                <tr>
+                                    <td>Configuration et intégration d'une newsletter<br>
+                                        <small>(Mailchimp, MailerLite…)</small></td>
+                                    <td class="price-highlight">150€</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="advanced-modules-title">🧱 Modules avancés (à ajouter si besoin)</h2>
+
+            <div class="sections-grid">
+                <div class="formula-card">
+                    <h4>🛒 Module - E-commerce</h4>
+                    <div class="formula-price">650€</div>
+                    <p>Créez votre boutique en ligne simplement</p>
+                    <ul class="formula-features">
+                        <li>Jusqu'à 10 produits (catalogue extensible)</li>
+                        <li>Panier, paiement (Stripe ou Shopify Lite)</li>
+                        <li>Gestion CMS simple des produits</li>
+                        <li>Email de confirmation</li>
+                        <li>Page boutique + page produit</li>
+                    </ul>
+                </div>
+
+                <div class="formula-card">
+                    <h4>📅 Module - Prise de Rendez-vous</h4>
+                    <div class="formula-price">150€</div>
+                    <p>Permettez à vos clients de réserver facilement</p>
+                    <ul class="formula-features">
+                        <li>Intégration Calendly, TidyCal, Planity, etc.</li>
+                        <li>Page dédiée : "Prendre rendez-vous"</li>
+                        <li>Personnalisation de l'interface</li>
+                        <li>Notifications automatiques (selon outils choisis)</li>
+                    </ul>
+                </div>
+
+                <div class="formula-card">
+                    <h4>🎯 Module - Stratégie de référencement</h4>
+                    <div class="formula-price">290€</div>
+                    <p>Machine à contenu pour booster votre visibilité</p>
+                    <ul class="formula-features">
+                        <li>Analyse mots-clés, arborescence optimisée</li>
+                        <li>Plan de contenu, machine à contenu prête à l'emploi</li>
+                        <li>Type blog ou équivalent</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="payment-section">
+                <h3>Paiement</h3>
+                <div class="payment-terms">
+                    <div class="payment-term">
+                        <strong>50% à la signature du devis</strong><br>
+                        (acompte)
+                    </div>
+                    <div class="payment-term">
+                        <strong>50% à la livraison</strong><br>
+                        (solde)
+                    </div>
+                </div>
+                <p style="margin-top: 25px; font-size: 1.1em; color: #002730;">
+                    Paiement sécurisé via <a href="https://www.shine.fr/">Shine Facture</a> ou virement bancaire
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
